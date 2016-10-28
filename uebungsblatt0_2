@@ -1,1 +1,118 @@
-dd
+
+/**
+ * @author Yannis Blosch 3256958
+ *Aufgabe 2
+ */
+public class IfElseSwitch {
+	
+//Aufgabenteil a)
+	static String compare3numbers(int a, int b, int c) {
+		String lösungVergleich; //hier wird die Variable deklariert die später zurückgegeben wird! Man könnte sie auch direkt ausgeben.  
+		if (a == b || a == c || b == c )
+			System.out.println("Bitte geben sie ungleiche Zahlen ein!!!");
+		//Ist a die größte Variable?
+		if (a > b && a > c) {
+			if (b > c) {
+				lösungVergleich = a + " ist die größte Zahl, " + b + " ist die mittlere Zahl und " + c + " ist die kleinste Zahl";
+			} else {
+				lösungVergleich = a + " ist die größte Zahl, " + c + " ist die mittlere Zahl und " + b + " ist die kleinste Zahl";
+			}
+		//Ist b die größte Variable?
+		} else if (b > a && b > c) {
+			if (a > c) { 
+				lösungVergleich = b + " ist die größte Zahl, " + a + " ist die mittlere Zahl und " + c + " ist die kleinste Zahl";
+			} else {
+				lösungVergleich = a + " ist die größte Zahl, " + c + " ist die mittlere Zahl und " + a + " ist die kleinste Zahl";
+			}
+		//Nun kann nur noch c die größte Variable sein.	
+		} else if (a > b) {
+			lösungVergleich = c + " ist die gr ößte Zahl, " + a + " ist die mittlere Zahl und " + b + " ist die kleinste Zahl";
+		} else {
+			lösungVergleich = c + " ist die größte Zahl, " + b + " ist die mittlere Zahl und " + a + " ist die kleinste Zahl";
+		}
+		return lösungVergleich;
+	}
+//Aufgabenteil a) Ende
+//Aufgabenteil b) Anfang
+	static boolean isLeapYear(int x) {
+		boolean leapYear;
+		if (x < 2090 && x > 1590) {
+			if (x % 4 == 0) {
+				if (x % 100 == 0) {
+					if (x % 400 == 0) {
+						leapYear = true;
+					} else
+						leapYear = false;
+				} else
+					leapYear = true;
+			} else
+				leapYear = false;
+		} else
+			leapYear = false;
+		return leapYear;
+	}
+//Aufgabenteil b) ENde
+//Aufgabenteil c) Anfang
+	static void computeRealSolution(double a, double b, double c) {
+		double diskriminante = Math.pow(b, 2) - 4 * a * c;
+		double ergebnis1 = (-b + Math.sqrt(diskriminante)) / 2 * a;
+		double ergebnis2 = ((-b - Math.sqrt(diskriminante)) / 2 * a);
+		if (diskriminante > 0) {
+			System.out.println(ergebnis1);
+			System.out.println(ergebnis2);
+		} else if (diskriminante == 0) {
+			System.out.println(ergebnis1);
+		} else {
+			System.out.println("there is no real solution...");
+		}
+	}
+//Aufgabenteil c) Ende	
+//Aufgabenteil d) Anfang
+	static double computeGrade(int punktzahl) {
+		double note;
+		if (punktzahl < 45) {
+			note = 5.0;
+		} else {
+			if (punktzahl < 48) {
+				note = 4.0;
+			} else if (punktzahl < 53) {
+				note = 3.7;
+			} else if (punktzahl < 58) {
+				note = 3.3;
+			} else if (punktzahl < 63) {
+				note = 3.0;
+			} else if (punktzahl < 68) {
+				note = 2.7;
+			} else if (punktzahl < 73) {
+				note = 2.3;
+			} else if (punktzahl < 78) {
+				note = 2.0;
+			} else if (punktzahl < 83) {
+				note = 1.7;
+			} else if (punktzahl < 88) {
+				note = 5.0;
+			} else if (punktzahl < 91) {
+				note = 1.0;
+			} else {
+				System.out.print("Die angegebene Punktzahl ist zu hoch, daher die Note ");
+				note = 5.0;
+			}
+		}
+		return note;
+	}
+//Aufgabenteil d) Ende
+//Main-Methode, hier werden die oben geschriebenen Methoden aufgerufen und deren Ergebnisse auf der Konsole ausgegeben.
+	public static void main(String[] args) {
+		String text = compare3numbers(1, 2, 3);
+		System.out.println(text);
+		int jahr = 1600;
+		boolean schaltjahr = isLeapYear(jahr);
+		System.out.println(schaltjahr);
+		computeRealSolution(3, 4, -10);
+		double note = computeGrade(65);
+		System.out.println(note);
+
+	}
+
+}
+
