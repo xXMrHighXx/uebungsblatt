@@ -1,0 +1,121 @@
+public class IfElseSwitch {
+
+	// Aufgabe 2 a)
+
+	private static void compare3Numbers(int a, int b, int c) {
+		// Es wird überprüft ob gleiche Zahlen vorhanden sind
+		if (a == b || a == c || b == c) {
+			System.out.println("Es gibt gleich große Zahlen");
+		} else {
+
+			if (a > b && a > c) {
+				// a ist größer als b und c
+				if (b > c) {
+					System.out.println(a + "\t" + b + "\t" + c);
+				} else {
+					System.out.println(a + "\t" + c + "\t" + b);
+				}
+			} else if (b > a && b > c) {
+				// b ist größer als a und c
+				if (a > c) {
+					System.out.println(b + "\t" + a + "\t" + c);
+				} else {
+					System.out.println(b + "\t" + c + "\t" + a);
+				}
+			} else {
+				// c ist größer als b und a
+				if (a > b) {
+					System.out.println(c + "\t" + a + "\t" + b);
+				} else {
+					System.out.println(c + "\t" + b + "\t" + a);
+				}
+			}
+		}
+	}
+
+	// Aufgabe 2 b)
+	private static boolean isLeapYear(int year) {
+
+		/*
+		 * Dieses Programm überprüft ob das eingegebene Jahr ein Schaltjahr ist
+		 * und gibt dem entsprechend einen Wahrheitswert aus
+		 * 
+		 * Es wird abgefragt: Ist das Jahr zwischen 1590 und 2090? Ist das Jahr
+		 * durch 4 teilbar oder durch 400 aber nicht durch 100 teilbar?
+		 *
+		 * Wenn diese Bedingungen zutreffen wird die Variable leapyear = true
+		 * gesezt ansonsten wird leapyear = false gesetzt.
+		 *
+		 * Schließlich wird der Wert von leapyear zurückgegeben
+		 */
+
+		boolean leapyear;
+
+		if (year > 1590 && year < 2090 && ((year % 4 == 0 || (year % 400 == 0 && year % 100 != 0)))) {
+			leapyear = true;
+		} else {
+			leapyear = false;
+		}
+
+		return leapyear;
+
+	}
+
+	// Aufgabe 2 c)
+
+	private static void computeRealSolutions(int a, int b, int c) {
+		// Wenn der Wert unter der Wurzel negativ ist so
+		if (b * b - 4 * a * c < 0) {
+			System.out.println("Es gibt keine reelle Loesung!");
+		} else {
+
+			double x1 = (-b + Math.sqrt(b * b - 4. * a * c)) / (2. * a);
+			double x2 = (-b - Math.sqrt(b * b - 4. * a * c)) / (2. * a);
+
+			if (x1 == x2) {
+				System.out.println("Nullstelle: " + x1);
+			} else {
+				System.out.println("Nullstellen: " + x1 + "\t" + x2);
+			}
+
+		}
+
+	}
+
+
+
+	public static void main(String[] args) {
+
+		// Aufgabe 1 a)
+		System.out.println("Hello World!\nThis is my first Java program.");
+
+		/*
+		 * Aufagbe 1 b)
+		 * 
+		 * System.out.print() ist eine Ausgabe in der Console
+		 * System.out.println() ist eine Ausgabe in der Console mit
+		 * Zeilenumbruch am Ende \n ist ein Zeilenumbruch innerhalb eines
+		 * Strings \t ist ein Tabulator innerhalb eines Strings
+		 */
+
+		// Aufgabe 1 c)
+		String a = "Hello World!";
+		String b = "This is my first Java program.";
+		System.out.println(a + "\n" + b);
+
+		/*
+		 * Aufgabe 1 d)
+		 * 
+		 * Variablen sollten verwendet werden, ein Paramter in einem Programm
+		 * verschiedene Werte annehmen soll
+		 */
+
+		System.out.println(isLeapYear(16));
+
+		compare3Numbers(2, 10, 8);
+
+		computeRealSolutions(1, 0, -1);
+
+	}
+
+}
